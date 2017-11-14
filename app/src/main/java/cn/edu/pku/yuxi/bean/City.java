@@ -36,6 +36,7 @@ public class City {
         return allFristPY;
     }
 
+    //增加一个构造函数City
     public City(String province, String city, String number, String firstPY, String allPY, String allFristPY) {
         this.province = province;
         this.city = city;

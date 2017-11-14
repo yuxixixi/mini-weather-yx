@@ -74,6 +74,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mCitySelect = (ImageView)findViewById(R.id.title_city_manager);
         mCitySelect.setOnClickListener(this);
         initView();
+        Intent intent1 = getIntent();
+        String choosenCity = intent1.getStringExtra("city_name");
+        Toast.makeText(MainActivity.this,choosenCity,Toast.LENGTH_LONG).show();
     }
     void initView(){
         city_name_Tv = (TextView) findViewById(R.id.title_city_name);
@@ -114,7 +117,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE) {
                 Log.d("myWeather", "网络OK");
                 queryWeatherCode(cityCode);
-            }else
+            } else
             {
                 Log.d("myWeather", "网络挂了");
                 Toast.makeText(MainActivity.this,"网络挂了！",Toast.LENGTH_LONG).show();
