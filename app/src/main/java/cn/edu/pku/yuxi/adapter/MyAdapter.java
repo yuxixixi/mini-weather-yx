@@ -21,6 +21,9 @@ import cn.edu.pku.yuxi.miniweather.R;
  * Created by yuxi on 17/11/9.
  */
 
+/**
+自定义适配器，重写父类的一组构造函数，用于将上下文、Listviw子项布局的id和数据都传进来
+ */
 public class MyAdapter extends ArrayAdapter<City> {
     private Context context;
     private int resourceId;
@@ -35,13 +38,14 @@ public class MyAdapter extends ArrayAdapter<City> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        City city = getItem(position);
+        City city = getItem(position);//得到当前项的实例
         View view;
         if (convertView == null) {
             view = LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
         } else {
             view = convertView;
         }
+        //covertview用于将之前加载好的布局进行缓存，为空用缓存，不为空则加载
         TextView cityName =(TextView)view.findViewById(R.id.city_name);
         TextView cityCode =(TextView)view.findViewById(R.id.city_code);
         cityName.setText(city.getCity());
